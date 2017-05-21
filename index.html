@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="/asyncMap.js" type="text/javascript"></script>
+    <script src="/asyncAsyncMap.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      [1, 2, 3, 4, 5].asyncMap((item) => { return item + 1 }, result => console.log(result));
+
+      [1, 2, 3, 4, 5].asyncAsyncMap((item) => {
+        return new Promise(resolve => {
+          setTimeout(() => {
+            console.log(item + 1);
+            resolve(item + 1)
+          }, Math.floor(Math.random() * 1000) + 200) })},
+        result => console.log(result))
+    </script>
+  </body>
+</html>
